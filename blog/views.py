@@ -1,7 +1,7 @@
 from django.http import HttpResponse, Http404
-from datetime import datetime
 from django.shortcuts import render, redirect
-
+from .models import Post
+from django.utils import timezone
 
 def base(request):
-	return render(request,'blog/base.html',locals())
+    return render(request, 'blog/base.html',locals())
