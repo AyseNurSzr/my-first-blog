@@ -1,7 +1,7 @@
-from django.http import HttpResponse, Http404
-from django.shortcuts import render, redirect
-from .models import Post
+from django.shortcuts import render 
 from django.utils import timezone
+from .models import Post
 
 def base(request):
-    return render(request, 'blog/base.html',locals())
+	posts=Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'blog/base.html',{'posts':posts})
